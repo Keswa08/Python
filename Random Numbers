@@ -1,0 +1,38 @@
+#name: chenna keshav reddy
+#description:code to generate 2 random files and serach the user given input number
+import random
+#creating files with random numbers
+randomnumbers = []
+with open("/content/sample_data/numberfile1.txt",'w') as f:
+    f.write(',')
+    for i in range(50):
+        r1 = random.randint(0, 100)  
+        while r1 in randomnumbers:
+            r1 = random.randint(0, 100) 
+        f.write(str(r1))
+        randomnumbers.append(r1)
+        f.write(',')
+with open("/content/sample_data/numberfile2.txt",'w') as f:
+    f.write(',')
+    for i in range(50):
+        r2 = random.randint(0, 100)
+        while r2 in randomnumbers:
+            r2 = random.randint(0, 100)
+        f.write(str(r2))
+        randomnumbers.append(r2)
+        f.write(',')   
+#function to search the number      
+def search_usernumber(number): 
+    f = open("/content/sample_data/numberfile1.txt",'r')
+    for line in f:
+        index = line.find(number)
+        if index!=-1:
+            print("the number is in numberfile1")
+    f = open("/content/sample_data/numberfile2.txt",'r')
+    for line in f:
+        index = line.find(number)
+        if index!=-1:
+            print("the number is in numberfile2")                  
+number = input("please give the number you want to search in the file")
+string = ','+str(number)+','
+search_usernumber(string)
